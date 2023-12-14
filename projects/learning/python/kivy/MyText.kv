@@ -1,0 +1,190 @@
+# MainWidget:
+# BoxLayoutExample:
+# AnchorLayoutExample:
+# GridLayoutExample:
+# StackLayoutExample:
+# ScrollViewExample:
+# PageLayoutExample:
+#CounterLayout:
+
+
+<MenuScreen>:
+    BoxLayout:
+        Button:
+            text: 'Goto settings'
+            on_press: root.manager.current = 'settings'
+        Button:
+            text: 'Quit'
+        CounterLayout:
+
+<SettingsScreen>:
+    ScrollViewExample:
+    BoxLayout:
+        Button:
+            text: 'My settings button'
+        Button:
+            text: 'Back to menu'
+            on_press: root.manager.current = 'menu'
+
+
+<CounterLayout>:
+    # orientation: 'vertical'
+    cols: 2
+    Label:
+        id: label_id
+        text: root.counterString
+        font_size: 100
+    Button:
+        text: 'Increment'
+        on_press: root.increase()
+        disabled: not root.CanChange
+    Switch:
+        # text: 'Increment'
+        on_active: root.toogleSwitch(self)
+        # disabled: not root.CanChange
+    Button:
+        text: 'Decrement'
+        on_press: root.decrease()
+    Button:
+        text: 'Reset'
+        on_press: root.reset()
+    ToggleButton:
+        text: 'OFF'
+        on_state: root.start_stop(self)
+    TextInput:
+        id : text_input_id
+        text : 'placeholder' #default text
+        multiline : False #single line
+        on_text_validate : root.on_enter(self)
+    Label : 
+        # text : text_input_id.text
+        text :  "Your name is :: " +   root.inp
+
+<PageLayoutExample@PageLayout>:
+    MainWidget:
+    BoxLayoutExample:
+    AnchorLayoutExample:
+    GridLayoutExample:
+    StackLayoutExample:
+
+
+
+<ScrollViewExample@ScrollView>:
+    StackLayoutExample:
+        size_hint: 1, None
+        height: 4000 #self.minimum_height
+
+
+<StackLayoutExample>:
+    Button:
+        text: 'Button 123'
+        size_hint: 0.2, 0.2
+    Button:
+        text: 'Button 123'
+        size_hint: 0.2, 0.2
+    Button:
+        text: 'Button 123'
+        size_hint: 0.2, 0.2
+    Button:
+        text: 'Button 123'
+        size_hint: 0.2, 0.2
+    Button:
+        text: 'Button 123'
+        size_hint: 0.2, 0.2
+    Button:
+        text: 'Button 787798'
+        size_hint: 0.1, 0.1
+                
+
+<GridLayoutExample@GridLayout>:
+
+    cols: 2
+    spacing: 10
+    # generate 10 buttons without loop 
+    Button:
+        text: 'Button 1'
+
+    BoxLayoutExample:
+    Button:
+        text: 'Button 3'
+    AnchorLayoutExample:
+    Button:
+        text: 'Button 4'
+    MainWidget:
+
+
+
+<AnchorLayoutExample>:
+    anchor_x: 'center' # left,center,right
+    anchor_y: 'top' # bottom,top,center
+    BoxLayout:
+        # orientation:
+        size_hint: 1,.1
+        # add a background color red 
+        canvas.before:
+            Color:
+                rgba: 1,0,0,1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Button:
+            text: 'Button 1'
+            # size_hint: 0.5, 0.5 # its proportional to the layout box 
+            # size_hint: .3,.1 
+            # size : 100 , 40 # its take effects when the size_hint is None
+            # pos_hint: {'center_x': 0.5, 'center_y': 0.5}        
+
+        Label:
+            id: label_id
+            text: 'Anchor Layout'
+
+
+<BoxLayoutExample>:
+    orientation: 'vertical'
+    Button:
+        text: 'Button 1'
+        # size_hint: 0.5, 0.5 # its proportional to the layout box 
+        size_hint: None,None # its proportional to the layout box
+        size : 100 , 40 # its take effects when the size_hint is None
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+    BoxLayout:
+        orientation: 'horizontal'
+        spacing: 20
+        Button:
+            text: 'Button 2'
+            size_hint: 0.5, 0.5
+            pos_hint: {'x': 0.5, 'center_y': 0.5} # x : 0.5 move it 50% to the left ml : 50% in css
+        # ADD THREE MORE BOTTON WITH ONLY A TEXT
+        Button:
+            text: 'Button 3'
+        Button:
+            text: 'Button 3.1'
+        Button:
+            text: 'Button 3.2'
+        Button:
+            text: 'Button 3.3'
+        Button:
+            text: 'Button 3.4'
+            
+
+    Button:
+        text: 'Button 3'
+        size_hint: 0.5, 0.5
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+
+<MainWidget>:
+    Button:
+        text: 'Text'
+        size : 100 , 40
+        pos : 50 ,50
+
+    Button:
+        text: 'Iniciar Sesion'
+        size : 150 , 40
+        pos : 50 ,150        
+    Label:
+        text: 'Put your name ::'
+        size : 150 , 40
+        pos : 150 ,180      
+        color : 245, 40, 145, 0.8 

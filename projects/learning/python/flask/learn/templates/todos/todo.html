@@ -1,0 +1,16 @@
+<div
+    class="todo-item w-[200px] p-2 hover:shadow bg-white hover:rounded-md duration-900 transition-500 cursor-pointer group">
+    <p class="todo-item__text text-lg font-bold  text-{{todo['color']}}-600">{{ todo['name'] }}</p>
+    <div class="todo-item__details my-1">
+        <span class="text-xs text-gray-400">{{todo['description']}}</span>
+    </div>
+    <div class="state-date flex justify-between text-{{todo['color']}}-600">
+        <span class="state text-sm capitalize"> {{todo['state']}} </span>
+        <span class="date text-xs text-gray-300"> {{todo['date']}} </span>
+    </div>
+    <!-- group-hover:flex hidden  -->
+    <div class="actions flex gap-4 my-2">
+        <a href="/todos/{{todo['id']}}/edit" class="text-xs text-yellow-800">Edit</a>
+        <a href="/todos/{{todo['id']}}/delete" class="text-xs text-red-600">Delete</a>
+    </div>
+</div>
